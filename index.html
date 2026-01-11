@@ -131,11 +131,25 @@
                         </div>
                         <div class="narrow-section-bottom">
                             <img src="img/rounded corner.svg" alt="">
-                            <div class="video-thumbnail"></div>
+                            <div class="video-thumbnail">
+                                <video autoplay muted loop playsinline>
+                                    <source src="img/Placeholder.mp4" type="video/mp4">
+                                </video>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <img src="img/Placeholder Video.webp" class="video-thumbnail-mobile" alt="Video">
+                <div class="video-responsive-container">
+                    <div class="click-to-watch">
+                        <svg xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 512">
+                            <path fill-rule="nonzero" d="M255.99 0c70.68 0 134.7 28.66 181.02 74.98C483.33 121.3 512 185.31 512 256c0 70.68-28.67 134.69-74.99 181.01C390.69 483.33 326.67 512 255.99 512S121.3 483.33 74.98 437.01C28.66 390.69 0 326.68 0 256c0-70.67 28.66-134.7 74.98-181.02C121.3 28.66 185.31 0 255.99 0zm77.4 269.81c13.75-8.88 13.7-18.77 0-26.63l-110.27-76.77c-11.19-7.04-22.89-2.9-22.58 11.72l.44 154.47c.96 15.86 10.02 20.21 23.37 12.87l109.04-75.66zm79.35-170.56c-40.1-40.1-95.54-64.92-156.75-64.92-61.21 0-116.63 24.82-156.74 64.92-40.1 40.11-64.92 95.54-64.92 156.75 0 61.22 24.82 116.64 64.92 156.74 40.11 40.11 95.53 64.93 156.74 64.93 61.21 0 116.65-24.82 156.75-64.93 40.11-40.1 64.93-95.52 64.93-156.74 0-61.22-24.82-116.64-64.93-156.75z"/>
+                        </svg>
+                        Click to watch the video!
+                    </div>
+                    <video class="video-thumbnail-mobile" autoplay muted loop playsinline>
+                        <source src="img/Placeholder.mp4" type="video/mp4">
+                    </video>
+                </div>
             </div>
             <div class="works" id="works">
                 <div class="headline">
@@ -901,6 +915,25 @@
                 <img src="img/works/pitch/Pitch 8.webp" alt="PitchersHQ design 8" />
                 <img src="img/works/pitch/Pitch 9.webp" alt="PitchersHQ design 9" />
             </div>
+        </div>
+    </div>
+
+    <div id="preloader">
+        <svg width="24px" height="24px" id="thelogopreloader" transform="scale(1.5)" fill="transparent" stroke="#ffffff" stroke-width="1">
+            <path d="M2.66797 3.55561C2.66797 2.57377 3.46391 1.77783 4.44575 1.77783L8.89019 1.77783V8.00005C8.89019 8.98189 8.09425 9.77783 7.11241 9.77783H2.66797L2.66797 3.55561Z"/>
+            <path d="M15.1094 15.9999C15.1094 15.0181 15.9053 14.2222 16.8872 14.2222L21.3316 14.2222V20.4444C21.3316 21.4262 20.5357 22.2222 19.5538 22.2222H15.1094L15.1094 15.9999Z"/>
+            <path d="M21.335 8.00049C21.3347 8.98202 20.5391 9.77763 19.5576 9.77783H18.668L17.4951 9.78076C15.113 9.80505 15.1133 9.99987 15.1133 11.5552L15.1123 11.5542V12.4448C15.1121 13.4265 14.3167 14.2222 13.335 14.2222H12.4453C8.8909 14.2222 8.88965 14.2224 8.88965 17.7778V20.4448C8.88941 21.4265 8.09399 22.2222 7.1123 22.2222H2.66797V15.9995C2.6682 15.018 3.46376 14.2223 4.44531 14.2222H5.33496C8.88989 14.2222 8.88965 14.2222 8.88965 12.4448H8.89062V11.5552C8.89086 10.5737 9.68645 9.77804 10.668 9.77783H11.5576C15.112 9.77783 15.1133 9.7776 15.1133 6.22217V3.55518C15.1135 2.57355 15.9089 1.77783 16.8906 1.77783H21.335V8.00049Z"/>
+        </svg>
+
+        <div id="thenamepreloader">Hafid Yusuf</div>
+    </div>
+
+    <div class="youtube-popup">
+        <iframe src="https://www.youtube.com/embed/IubSm7jzuE0?si=M3phOeDWv7iXuq7k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="close-youtube">
+            <svg xmlns="http://www.w3.org/2000/svg" width="42px" height="42px" viewBox="0 0 24 24" fill="none">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M5.29289 5.29289C5.68342 4.90237 6.31658 4.90237 6.70711 5.29289L12 10.5858L17.2929 5.29289C17.6834 4.90237 18.3166 4.90237 18.7071 5.29289C19.0976 5.68342 19.0976 6.31658 18.7071 6.70711L13.4142 12L18.7071 17.2929C19.0976 17.6834 19.0976 18.3166 18.7071 18.7071C18.3166 19.0976 17.6834 19.0976 17.2929 18.7071L12 13.4142L6.70711 18.7071C6.31658 19.0976 5.68342 19.0976 5.29289 18.7071C4.90237 18.3166 4.90237 17.6834 5.29289 17.2929L10.5858 12L5.29289 6.70711C4.90237 6.31658 4.90237 5.68342 5.29289 5.29289Z" fill="#ffffff"/>
+            </svg>
         </div>
     </div>
 

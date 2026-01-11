@@ -6,6 +6,7 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-smooth: never;
+    outline: none;
 }
 
 :root {
@@ -364,17 +365,54 @@ nav {
                 align-self: stretch;
                 border-radius: 24px 24px 24px 24px;
                 background: url(img/Placeholder\ Video.webp) lightgray 50% / cover no-repeat;
+                box-shadow: 0px 0px 40px -10px rgba(1,32,78,0);
+                overflow: hidden;
+                transition: all .2s cubic-bezier(0,.72,.5,.87);
+                &:hover {
+                    transform: scale(1.2);
+                    box-shadow: 0px 40px 40px -10px rgba(1,32,78,0.1);
+                    cursor: pointer;
+                }
+                video {
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
         }
     }
 
+}
+.video-responsive-container {
+    display: none;
+    position: relative;
+}
+.click-to-watch {
+    position: absolute;
+    width: max-content;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-weight: 600;
+    color: white;
+    gap: 14px;
+    padding: 8px 18px 8px 8px;
+    border-radius: 100px;
+    background: rgba($color: #2A2B2C, $alpha: 0.6);
+    line-break: loose;
+    svg {
+        width: 32px;
+        fill: white;
+    }
 }
 .video-thumbnail-mobile {
     border-radius: 18px;
     width: 90%;
     margin-left: 5%;
     margin-top: 40px;
-    display: none;
 }
 
 .hero {
@@ -1182,6 +1220,73 @@ nav {
     color: var(--black);
 }
 
+#preloader {
+  position: fixed;
+  inset: 0;
+  background: var(--grey);
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+#thelogopreloader {
+    opacity: 0;
+}
+
+#thelogopreloader path {
+  fill: transparent;
+  stroke: var(--blue);
+  stroke-width: 1.5;
+}
+
+#thenamepreloader {
+  opacity: 0;
+  color: var(--black);
+  font-size: 18px;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  letter-spacing: 0px;
+  font-size: 18pt;
+}
+
+.youtube-popup {
+    position: fixed;
+    inset: 0;
+    opacity: 0;
+    pointer-events: none;
+    width: 70%;
+    height: 70%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999999999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(5px);
+}
+.close-youtube {
+    width: 54px;
+    height: 54px;
+    position: fixed;
+    background: var(--black);
+    border-radius: 500px;
+    border: solid white 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 12%;
+    right: 13.5%;
+    &:hover {
+        background: var(--blue);
+        cursor: pointer;
+    }
+}
+
 @media screen and (min-width: 1200px) {
     .menu-button {
         right: 100px;
@@ -1290,7 +1395,7 @@ nav {
             font-size: 24pt!important;
         }
     }
-    .video-thumbnail-mobile {
+    .video-responsive-container {
         display: block;
     }
     
@@ -1494,5 +1599,12 @@ nav {
     .work-images {
         padding: 5%;
         overflow: unset;
+    }
+    .youtube-popup iframe {
+        width: 90%;
+        height: 260px;
+    }
+    .close-youtube {
+        display: none;
     }
 }

@@ -1075,3 +1075,143 @@ $(".navigation-links a").on("click", function (e) {
     });
 
 });
+
+
+// =========== Preloader ========= //
+// ----------------------------------
+// STATE
+// ----------------------------------
+let shouldFinish = false;
+let isFinishing = false;
+
+// ----------------------------------
+// SETUP
+// ----------------------------------
+const paths = gsap.utils.toArray("#thelogopreloader path");
+
+paths.forEach(path => {
+  const length = path.getTotalLength();
+  gsap.set(path, {
+    strokeDasharray: length,
+    strokeDashoffset: length
+  });
+});
+
+gsap.set("#thelogopreloader", {
+    opacity: 1,
+    x: 80
+});
+gsap.set("#thenamepreloader", {
+    opacity: 0,
+    x: 60
+});
+
+// ----------------------------------
+// STROKE LOOP
+// ----------------------------------
+const strokeTl = gsap.timeline({
+  repeat: -1,
+  defaults: { ease: "none" }
+});
+
+strokeTl.to(paths, {
+  strokeDashoffset: 0,
+  duration: 1.2,
+  stagger: 0.1,
+  onComplete: () => {
+    if (shouldFinish && !isFinishing) {
+      isFinishing = true;
+      strokeTl.pause();
+      revealFinal();
+    }
+  }
+});
+
+strokeTl.to(paths, {
+  strokeDashoffset: (i, el) => -el.getTotalLength(),
+  duration: 1.2,
+  stagger: 0.1
+});
+
+window.addEventListener("load", () => {
+  shouldFinish = true;
+});
+
+// ----------------------------------
+// FINAL REVEAL
+// ----------------------------------
+function revealFinal() {
+  gsap.timeline()
+    .to("#thelogopreloader", {
+      duration: 0.6,
+      x: 0,
+      ease: "power2.out"
+    })
+    .to("#thelogopreloader path", {
+      fill: "#0062FF",
+      duration: 0.6,
+      ease: "power2.out"
+    })
+    .to("#thenamepreloader", {
+      opacity: 1,
+      x: 0,
+      duration: 0.6,
+      ease: "power2.out"
+    }, "-=0.3")
+    .to("#preloader", {
+      y: -60,
+      height: 60,
+      delay: .5,
+      duration: 0.6,
+      ease: "power2.inOut"
+    });
+}
+
+
+
+
+    const $modal = $(".youtube-popup");
+    const $iframe = $(".youtube-popup iframe");
+
+    const openVideo = () => {
+      $iframe.attr(
+        "src",
+        "https://www.youtube.com/embed/IubSm7jzuE0?si=M3phOeDWv7iXuq7k"
+      );
+
+      gsap.to($modal, {
+        opacity: 1,
+        pointerEvents: "auto",
+        duration: 0.3
+      });
+
+      gsap.to($iframe, {
+        scale: 1,
+        duration: 0.3,
+        ease: "power2.out"
+      });
+    };
+
+    const closeVideo = () => {
+      gsap.to($modal, {
+        opacity: 0,
+        pointerEvents: "none",
+        duration: 0.25
+      });
+
+      gsap.to($iframe, {
+        scale: 0.9,
+        duration: 0.25,
+        onComplete: () => {
+          $iframe.attr("src", "");
+        }
+      });
+    };
+
+    $(".video-thumbnail, .video-thumbnail-mobile").on("click", openVideo);
+    $(".close-youtube").on("click", closeVideo);
+
+    // click outside to close
+    $modal.on("click", function (e) {
+      if (e.target === this) closeVideo();
+    });
