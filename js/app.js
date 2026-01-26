@@ -1176,7 +1176,7 @@ function revealFinal() {
     const openVideo = () => {
       $iframe.attr(
         "src",
-        "https://www.youtube.com/embed/IubSm7jzuE0?si=M3phOeDWv7iXuq7k"
+        "https://www.youtube.com/embed/Nlj-aGNPRcs?si=OKcL_x6aVH8ZfU2I"
       );
 
       gsap.to($modal, {
